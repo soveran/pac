@@ -11,4 +11,4 @@ if (! test -f packages) {
 	exit 1
 }
 
-apply -3 pac-fetch `{ cat packages }
+cat packages | xargs -n 3 pac-fetch
