@@ -1,6 +1,6 @@
 #!/usr/bin/env rc
 
-# usage: pac-fetch <name> <shasum> <url>
+# Usage: pac-fetch <name> <shasum> <url>
 if (! ~ $#* 3) {
 	printf 'usage: pac-fetch <name> <shasum> <url>\n'
 	exit

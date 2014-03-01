@@ -1,6 +1,6 @@
 #!/usr/bin/env rc
 
-# usage: pac-install
+# Usage: pac-install
 if (! ~ $#* 0) {
 	printf 'usage: pac-install\n'
 	exit

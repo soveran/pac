@@ -1,6 +1,6 @@
 #!/usr/bin/env rc
 
-# usage: pac-env
+# Usage: pac-env
 if (! ~ $#* 0) {
 	printf 'usage: pac-env\n'
 	exit
