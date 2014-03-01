@@ -1,0 +1,47 @@
+#!/usr/bin/env rc
+
+# usage: pac
+if (~ $#* 0) {
+
+	if (! test -f .pacs) {
+		printf 'error: .pacs missing\n'
+		exit 1
+	}
+
+	echo `{ apply -3 pac `{ cat .pacs } }
+	exit
+}
+
+# usage: pac <name> <shasum> <url>
+if (~ $#* 3) {
+
+	# Libraries are installed in ./pacs
+	mkdir -p ./pacs
+
+	lib = $1
+	sha = $2
+
+	# Name is composed of module plus shasum
+	f = `{ printf './pacs/%s-%s.lua' $lib $sha }
+
+	# Exit if it's already installed
+	if (test -f $f) {
+		printf 'installed: %s\n' $f
+		exit
+	}
+
+	# Fetch file
+	curl -s $3 > temp-$2
+
+	# Verify integrity
+	if (~ $2 `{ shasum temp-$2 }) {
+
+		printf 'installed: %s\n' $f
+		mv temp-$2 $f
+	}
+
+	exit
+}
+
+# Explain usage
+printf 'usage: pac (install|name shasum url)\n'
