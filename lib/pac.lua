@@ -1,3 +1,3 @@
 return function(mod, sha)
-	return require("pacs." .. mod .. "-" .. sha)
+	return require("lib." .. mod .. "-" .. sha)
 end

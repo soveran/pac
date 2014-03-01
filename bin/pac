@@ -3,20 +3,20 @@
 # usage: pac
 if (~ $#* 0) {
 
-	if (! test -f .pacs) {
-		printf 'error: .pacs missing\n'
+	if (! test -f packages) {
+		printf 'error: ./packages file missing\n'
 		exit 1
 	}
 
-	echo `{ apply -3 pac `{ cat .pacs } }
+	apply -3 pac `{ cat packages }
 	exit
 }
 
 # usage: pac <name> <shasum> <url>
 if (~ $#* 3) {
 
-	# Libraries are installed in ./pacs
-	mkdir -p ./pacs
+	# Libraries are installed in ./lib
+	mkdir -p ./lib
 
 	lib = $1
 	sha = $2
@@ -26,7 +26,7 @@ if (~ $#* 3) {
 	short = `{ echo $sha | cut -c 1-7 }
 
 	# Name is composed of module plus shasum
-	f = `{ printf './pacs/%s-%s.lua' $lib $short }
+	f = `{ printf './lib/%s-%s.lua' $lib $short }
 
 	# Exit if it's already installed
 	if (test -f $f) {
@@ -39,7 +39,6 @@ if (~ $#* 3) {
 
 	# Verify integrity
 	if (~ $sha `{ shasum temp-$sha }) {
-
 		printf 'installed: %s\n' $f
 		mv temp-$sha $f
 	}
