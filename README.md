@@ -6,17 +6,17 @@ Package management for Lua libraries.
 Usage
 -----
 
-Define the dependencies in the `.pacs` file:
+Define the dependencies in the `packages` file:
 
 ```
-$ cat .pacs
+$ cat packages
 resp 31bf5e0408f122ee4f8ae4c21c07804564a55382 https://raw.github.com/soveran/resp/master/resp.lua
 ```
 
-Then run `pac`:
+Then run `pac install`:
 
 ```
-$ pac
+$ pac install
 installed: ./pacs/resp-31bf5e0.lua
 ```
 
