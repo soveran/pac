@@ -1,14 +1,17 @@
 #!/usr/bin/env rc
 
 # usage: pac-env
-if (~ $#* 0) {
-	if (! test -d lib) {
-		printf 'error: ./lib folder missing\n'
-		exit 1
-	}
-
-	package_path = `{ lua -e 'print(package.path)' }
-	lua_path = `{ printf './lib/?.lua;%s' $package_path }
-	
-	LUA_PATH=$lua_path $SHELL
+if (! ~ $#* 0) {
+	printf 'usage: pac-env\n'
+	exit
 }
+
+if (! test -d lib) {
+	printf 'error: ./lib folder missing\n'
+	exit 1
+}
+
+package_path = `{ lua -e 'print(package.path)' }
+lua_path = `{ printf './lib/?.lua;%s' $package_path }
+
+LUA_PATH=$lua_path $SHELL
