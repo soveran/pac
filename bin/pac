@@ -4,25 +4,22 @@ fn usage {
 	printf 'usage: pac install\n'
 	printf '       pac fetch <name> <shasum> <url>\n'
 	printf '       pac env\n'
-	exit
+	exit 1
 }
 
-# usage: pac
+# Usage: pac <subcommand>
 if (~ $#* 0) {
 	usage
 }
 
-# usage: pac
-switch ($1) {
-case 'install'
-	shift
-	pac-install $*
-case 'fetch'
-	shift
-	pac-fetch $*
-case 'env'
-	shift
-	pac-env $*
-case *
+# Build subcommand
+sc = pac-$1
+
+# Discard first argument
+shift
+
+if (which -s $sc) {
+	$sc $*
+} else {
 	usage
 }
