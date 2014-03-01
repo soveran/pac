@@ -17,20 +17,20 @@ Then run `pac`:
 
 ```
 $ pac
-installed: ./pacs/resp-31bf5e0408f122ee4f8ae4c21c07804564a55382.lua
+installed: ./pacs/resp-31bf5e0.lua
 ```
 
 For loading libraries:
 
 ```lua
 local pac = require("pac")
-local resp = pac("resp", "31bf5e0408f122ee4f8ae4c21c07804564a55382")
+local resp = pac("resp", "31bf5e0")
 ```
 
 Of course, you can avoid requiring `pac`:
 
 ```lua
-local resp = require("pacs.resp-31bf5e0408f122ee4f8ae4c21c07804564a55382")
+local resp = require("pacs.resp-31bf5e0")
 ```
 
 Installation

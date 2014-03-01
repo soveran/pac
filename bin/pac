@@ -20,9 +20,13 @@ if (~ $#* 3) {
 
 	lib = $1
 	sha = $2
+	url = $3
+
+	# Use a short sha for the file name
+	short = `{ echo $sha | cut -c 1-7 }
 
 	# Name is composed of module plus shasum
-	f = `{ printf './pacs/%s-%s.lua' $lib $sha }
+	f = `{ printf './pacs/%s-%s.lua' $lib $short }
 
 	# Exit if it's already installed
 	if (test -f $f) {
@@ -31,13 +35,13 @@ if (~ $#* 3) {
 	}
 
 	# Fetch file
-	curl -s $3 > temp-$2
+	curl -s $url > temp-$sha
 
 	# Verify integrity
-	if (~ $2 `{ shasum temp-$2 }) {
+	if (~ $sha `{ shasum temp-$sha }) {
 
 		printf 'installed: %s\n' $f
-		mv temp-$2 $f
+		mv temp-$sha $f
 	}
 
 	exit
