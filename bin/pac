@@ -17,10 +17,12 @@ switch ($1) {
 case 'install'
 	shift
 	pac-install $*
-	exit
 case 'fetch'
 	shift
 	pac-fetch $*
+case 'env'
+	shift
+	pac-env $*
 case *
 	usage
 }
