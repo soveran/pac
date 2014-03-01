@@ -1,0 +1,14 @@
+#!/usr/bin/env rc
+
+# usage: pac-install
+if (! ~ $#* 0) {
+	printf 'usage: pac-install\n'
+	exit
+}
+
+if (! test -f packages) {
+	printf 'error: ./packages file missing\n'
+	exit 1
+}
+
+apply -3 pac-fetch `{ cat packages }

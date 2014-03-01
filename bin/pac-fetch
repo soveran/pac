@@ -1,0 +1,35 @@
+#!/usr/bin/env rc
+
+# usage: pac-fetch <name> <shasum> <url>
+if (! ~ $#* 3) {
+	printf 'usage: pac-fetch <name> <shasum> <url>\n'
+	exit
+}
+
+# Libraries are installed in ./lib
+mkdir -p ./lib
+
+lib = $1
+sha = $2
+url = $3
+
+# Use a short sha for the file name
+short = `{ echo $sha | cut -c 1-7 }
+
+# Name is composed of module plus shasum
+f = `{ printf './lib/%s-%s.lua' $lib $short }
+
+# Exit if it's already installed
+if (test -f $f) {
+	printf 'installed: %s\n' $f
+	exit
+}
+
+# Fetch file
+curl -s $url > temp-$sha
+
+# Verify integrity
+if (~ $sha `{ shasum temp-$sha }) {
+	printf 'installed: %s\n' $f
+	mv temp-$sha $f
+}

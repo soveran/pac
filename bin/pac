@@ -1,50 +1,24 @@
 #!/usr/bin/env rc
 
+fn usage {
+	printf 'usage: pac (install|fetch <name> <shasum> <url>)\n'
+	exit
+}
+
 # usage: pac
 if (~ $#* 0) {
-
-	if (! test -f packages) {
-		printf 'error: ./packages file missing\n'
-		exit 1
-	}
-
-	apply -3 pac `{ cat packages }
-	exit
+	usage
 }
 
-# usage: pac <name> <shasum> <url>
-if (~ $#* 3) {
-
-	# Libraries are installed in ./lib
-	mkdir -p ./lib
-
-	lib = $1
-	sha = $2
-	url = $3
-
-	# Use a short sha for the file name
-	short = `{ echo $sha | cut -c 1-7 }
-
-	# Name is composed of module plus shasum
-	f = `{ printf './lib/%s-%s.lua' $lib $short }
-
-	# Exit if it's already installed
-	if (test -f $f) {
-		printf 'installed: %s\n' $f
-		exit
-	}
-
-	# Fetch file
-	curl -s $url > temp-$sha
-
-	# Verify integrity
-	if (~ $sha `{ shasum temp-$sha }) {
-		printf 'installed: %s\n' $f
-		mv temp-$sha $f
-	}
-
+# usage: pac
+switch ($1) {
+case 'install'
+	shift
+	pac-install $*
 	exit
+case 'fetch'
+	shift
+	pac-fetch $*
+case *
+	usage
 }
-
-# Explain usage
-printf 'usage: pac (install|name shasum url)\n'
