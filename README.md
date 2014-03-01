@@ -33,8 +33,23 @@ Of course, you can avoid requiring `pac`:
 local resp = require("lib.resp-31bf5e0")
 ```
 
+Our preferred way to do it is to run `pac env`, which creates a
+subshell where `./lib` is prepended to `LUA_PATH`. Once you run
+it, you can require the libraries without any prefix:
+
+```lua
+local resp = require("resp-31bf5e0")
+```
+
 Installation
 ------------
 
-Copy `./bin/pac` to your `path`.
-Copy `./lib/pac.lua` to your `package.path`.
+Copy `./bin/*` to your `path`. You can use the makefile to ease
+the process:
+
+```
+$ BIN=/usr/local/bin make
+```
+
+If you prefer to use the `pac` helper in your code, copy
+`./lib/pac.lua` to your `package.path`.
