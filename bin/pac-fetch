@@ -32,4 +32,7 @@ curl -s $url > temp-$sha
 if (~ $sha `{ shasum temp-$sha }) {
 	printf 'installed: %s\n' $f
 	mv temp-$sha $f
+} else {
+	printf 'failed: %s\n' $f
+	rm temp-$sha
 }
