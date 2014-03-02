@@ -26,7 +26,7 @@ if (test -f $f) {
 }
 
 # Fetch file
-curl -s $url > temp-$sha
+curl -s $url -o temp-$sha
 
 # Verify integrity
 if (~ $sha `{ shasum temp-$sha }) {
