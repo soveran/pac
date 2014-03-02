@@ -20,7 +20,7 @@ one referenced module:
 
 ```
 $ cat packages
-resp 31bf5e0408f122ee4f8ae4c21c07804564a55382 https://raw.github.com/soveran/resp/master/resp.lua
+resp 31bf5e0408f122ee4f8ae4c21c07804564a55382 https://raw.github.com/soveran/resp/1.0.0/resp.lua
 ```
 
 There are three space separated fields. The first one is the name
@@ -48,7 +48,7 @@ arguments. You can call `fetch` directly and provide the three
 values as parameters:
 
 ```
-$ pac fetch resp 31bf5e0408f122ee4f8ae4c21c07804564a55382 https://raw.github.com/soveran/resp/master/resp.lua
+$ pac fetch resp 31bf5e0408f122ee4f8ae4c21c07804564a55382 https://raw.github.com/soveran/resp/1.0.0/resp.lua
 ```
 
 The `pac fetch` command creates the `./lib` directory if
@@ -82,7 +82,7 @@ Define the dependencies in the `packages` file:
 
 ```
 $ cat packages
-resp 31bf5e0408f122ee4f8ae4c21c07804564a55382 https://raw.github.com/soveran/resp/master/resp.lua
+resp 31bf5e0408f122ee4f8ae4c21c07804564a55382 https://raw.github.com/soveran/resp/1.0.0/resp.lua
 ```
 
 Then run `pac install`:
