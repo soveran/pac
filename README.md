@@ -48,7 +48,7 @@ arguments. You can call `fetch` directly and provide the three
 values as parameters:
 
 ```
-$ pac fetch 31bf5e0408f122ee4f8ae4c21c07804564a55382 https://raw.github.com/soveran/resp/master/resp.lua
+$ pac fetch resp 31bf5e0408f122ee4f8ae4c21c07804564a55382 https://raw.github.com/soveran/resp/master/resp.lua
 ```
 
 The `pac fetch` command creates the `./lib` directory if
