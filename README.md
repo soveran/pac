@@ -119,21 +119,21 @@ Commands
 Whenever you call `pac <command>`, the program `pac-<command>`
 is executed. Below are the core commands:
 
-### pac-help
+#### `pac-help`
 
 Displays the list of installed commands. A command is any program
 in the executable path with the pattern `pac-*`.
 
-### pac-fetch
+#### `pac-fetch`
 
 Receives a module `name`, a `sha` and a `URL`, and installs the
 module locally in `./lib/`.
 
-### pac-install
+#### `pac-install`
 
 Calls `pac-fetch` for every three values in the `packages` file.
 
-### pac-env
+#### `pac-env`
 
 Creates a sub-shell with `./lib/?.lua` prepended to the `LUA_PATH`
 environment variable.
