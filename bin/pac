@@ -1,9 +1,7 @@
 #!/usr/bin/env rc
 
 fn usage {
-	printf 'usage: pac install\n'
-	printf '       pac fetch <name> <shasum> <url>\n'
-	printf '       pac env\n'
+	pac-help
 	exit 1
 }
 

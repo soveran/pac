@@ -1,0 +1,10 @@
+#!/usr/bin/env rc
+
+printf 'usage:\n'
+printf '	pac <command> [...]\n'
+printf '\n'
+
+printf 'commands:\n'
+for (sc in `{ which pac }^-*) {
+	basename $sc | tr '-' ' ' | sed 's/^/	/'
+}
