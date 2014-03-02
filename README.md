@@ -121,8 +121,8 @@ is executed. Below are the core commands:
 
 #### `pac-help`
 
-Displays the list of installed commands. A command is any program
-in the executable path with the pattern `pac-*`.
+Lists the installed commands. A command is any program in the
+executable path with the pattern `pac-*`.
 
 #### `pac-fetch`
 
