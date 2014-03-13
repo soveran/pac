@@ -144,7 +144,7 @@ Requirements
 Pac uses [rc][rc], [xargs][xargs], [curl][curl] and
 [shasum][shasum]. Make sure you have these tools available.
 
-[rc]: http://en.wikipedia.org/wiki/Rc
+[rc]: http://www.scs.stanford.edu/nyu/04fa/sched/readings/rc.pdf
 [xargs]: http://en.wikipedia.org/wiki/Xargs
 [curl]: http://en.wikipedia.org/wiki/CURL
 [shasum]: http://en.wikipedia.org/wiki/Shasum
