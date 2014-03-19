@@ -6,5 +6,5 @@ printf '\n'
 
 printf 'commands:\n'
 for (sc in `{ which pac }^-*) {
-	basename $sc | tr '-' ' ' | sed 's/^/	/'
+	basename $sc | sed 's/-/ /' | sed 's/^/	/'
 }
