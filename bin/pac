@@ -16,7 +16,7 @@ sc = pac-$1
 # Discard first argument
 shift
 
-if (which $sc > /dev/null) {
+if (command -v $sc > /dev/null) {
 	$sc $*
 } else {
 	usage
