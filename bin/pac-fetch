@@ -6,22 +6,16 @@ if (! ~ $#* 3) {
 	exit
 }
 
-# Libraries are installed in ./lib
-mkdir -p ./lib
-
 lib = $1
 sha = $2
 url = $3
 
-# Use a short sha for the file name
-short = `{ echo $sha | cut -c 1-7 }
-
-# Name is composed of module plus shasum
-f = `{ printf './lib/%s-%s.lua' $lib $short }
+# Create directory if needed
+mkdir -p `{ dirname $lib }
 
 # Exit if it's already installed
-if (test -f $f) {
-	printf 'installed: %s\n' $f
+if (test -f $lib) {
+	printf 'installed: %s\n' $lib
 	exit
 }
 
@@ -30,9 +24,9 @@ curl -s $url -o temp-$sha
 
 # Verify integrity
 if (~ $sha `{ shasum temp-$sha }) {
-	printf 'installed: %s\n' $f
-	mv temp-$sha $f
+	printf 'installed: %s\n' $lib
+	mv temp-$sha $lib
 } else {
-	printf 'failed: %s\n' $f
+	printf 'failed: %s\n' $lib
 	rm temp-$sha
 }
