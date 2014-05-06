@@ -10,14 +10,14 @@ lib = $1
 sha = $2
 url = $3
 
-# Create directory if needed
-mkdir -p `{ dirname $lib }
-
 # Exit if it's already installed
 if (test -f $lib) {
 	printf 'installed: %s\n' $lib
 	exit
 }
+
+# Create directory if needed
+mkdir -p `{ dirname $lib }
 
 # Fetch file
 curl -s $url -o temp-$sha
