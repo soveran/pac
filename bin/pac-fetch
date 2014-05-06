@@ -12,7 +12,14 @@ url = $3
 
 # Exit if it's already installed
 if (test -f $lib) {
-	printf 'installed: %s\n' $lib
+
+	# Verify integrity
+	if (~ $sha `{ shasum $lib }) {
+		printf 'installed: %s\n' $lib
+	} else {
+		printf 'conflicts: %s\n' $lib
+	}
+
 	exit
 }
 
