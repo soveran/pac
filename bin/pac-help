@@ -5,6 +5,6 @@ printf '	pac <command> [...]\n'
 printf '\n'
 
 printf 'commands:\n'
-for (sc in `{ command -v pac }^-*) {
+for (sc in `{ whatis -p pac }^-*) {
 	basename $sc | sed 's/-/ /' | sed 's/^/	/'
 }
